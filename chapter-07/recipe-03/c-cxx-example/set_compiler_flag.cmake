@@ -20,13 +20,13 @@ include(CheckFortranCompilerFlag)
 
 function(set_compiler_flag _result _lang)
   # build a list of flags from the arguments
-  set(_list_of_flags)
+  set(_list_of_flags)                         # 获取多余的传递参数，即除去_result _lang之后的参数
   # also figure out whether the function
   # is required to find a flag
   set(_flag_is_required FALSE)
-  foreach(_arg IN ITEMS ${ARGN})
-    string(TOUPPER "${_arg}" _arg_uppercase)
-    if(_arg_uppercase STREQUAL "REQUIRED")
+  foreach(_arg IN ITEMS ${ARGN})              # 遍历每一个flag
+    string(TOUPPER "${_arg}" _arg_uppercase)  # 将参数大写
+    if(_arg_uppercase STREQUAL "REQUIRED")    # 只要参数中存在REQUIRED设置flag标志
       set(_flag_is_required TRUE)
     else()
       list(APPEND _list_of_flags "${_arg}")
@@ -37,9 +37,9 @@ function(set_compiler_flag _result _lang)
   # loop over all flags, try to find the first which works
   foreach(flag IN ITEMS ${_list_of_flags})
 
-    unset(_flag_works CACHE)
+    unset(_flag_works CACHE)                          # 取消上一次foreach循环给_flag_work带来的缓存                     
     if(_lang STREQUAL "C")
-      check_c_compiler_flag("${flag}" _flag_works)
+      check_c_compiler_flag("${flag}" _flag_works)    # 检查每一个标志的有效性
     elseif(_lang STREQUAL "CXX")
       check_cxx_compiler_flag("${flag}" _flag_works)
     elseif(_lang STREQUAL "Fortran")

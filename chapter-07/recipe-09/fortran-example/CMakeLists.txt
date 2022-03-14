@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
-
+# fortran语言模块
 project(recipe-09 LANGUAGES Fortran)
 
 include(GNUInstallDirs)

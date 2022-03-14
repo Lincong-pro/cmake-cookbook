@@ -12,7 +12,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR})
 
 # defines targets and sources
-include(src/CMakeLists.txt)
+include(src/CMakeLists.txt)      # 直接调用下层CMakeLists.txt脚本实质上和add_subdirectory效果一致
 include(external/CMakeLists.txt)
 
 enable_testing()
