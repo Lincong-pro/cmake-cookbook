@@ -14,13 +14,13 @@ message(STATUS "${PROJECT_NAME} staged install: ${STAGED_INSTALL_PREFIX}")
 add_subdirectory(external/upstream)
 
 include(ExternalProject)
-
-ExternalProject_Add(${PROJECT_NAME}_core
-  DEPENDS
+ 
+ExternalProject_Add(${PROJECT_NAME}_core              # name
+  DEPENDS                                             # depends
     fftw3_external
-  SOURCE_DIR
-    ${CMAKE_CURRENT_LIST_DIR}/src
-  CMAKE_ARGS
+  SOURCE_DIR                                          # project_source_dir
+    ${CMAKE_CURRENT_LIST_DIR}/src         
+  CMAKE_ARGS                                          # specified options like build.bat
     -DFFTW3_DIR=${FFTW3_DIR}
     -DCMAKE_C_STANDARD=${CMAKE_C_STANDARD}
     -DCMAKE_C_EXTENSIONS=${CMAKE_C_EXTENSIONS}
@@ -29,7 +29,7 @@ ExternalProject_Add(${PROJECT_NAME}_core
     -DCMAKE_C_FLAGS:STRING=${CMAKE_C_FLAGS}
     -DCMAKE_PREFIX_PATH:PATH=${CMAKE_PREFIX_PATH}
   BUILD_ALWAYS
-    1
+    1                                                 
   INSTALL_COMMAND
     ""
   )

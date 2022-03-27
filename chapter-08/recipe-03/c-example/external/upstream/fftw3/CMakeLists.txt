@@ -6,7 +6,7 @@ if(FFTW3_FOUND)
   add_library(fftw3_external INTERFACE)  # dummy
 else()
   message(STATUS "Suitable FFTW3 could not be located. Downloading and building!")
-
+  # 不存在执行外部下载编译
   include(ExternalProject)
   ExternalProject_Add(fftw3_external
     URL
